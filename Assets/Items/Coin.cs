@@ -25,7 +25,7 @@ public class Coin : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
 	{
-        rb.isKinematic = false;
+        //rb.isKinematic = false;
         //check to see if this coin has been picked up by the player, and if so destroy it
         if (other.name == "Player")
 		{

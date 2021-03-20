@@ -22,4 +22,10 @@ public class LevelManager : MonoBehaviour
         coins += numberOfCoins;
         Debug.Log("Coin picked up! You are holding " + coins + " coins.");
     }
+
+    //make public so it can be seen by other scripts in the program
+    public void EndGame()
+	{
+        Debug.Log("Player died!");
+	}
 }

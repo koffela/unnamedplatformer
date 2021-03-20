@@ -98,4 +98,15 @@ public class PlayerScript : MonoBehaviour
         transform.localScale = characterScale;
     }
 
+    void OnCollisionEnter (Collision collisionInfo)
+	{
+        if (collisionInfo.collider.tag == "hazard")
+        {
+            FindObjectOfType<LevelManager>().EndGame();
+        }
+        else if (collisionInfo.collider.tag == "enemy")
+        {
+            //nothing yet
+        }
+    }
 }
