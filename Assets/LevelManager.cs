@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     bool gameEnded = false;
-    public int coins = 0;
+    private int coins = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class LevelManager : MonoBehaviour
 
     }
 
+    //public so we can call addcoins from elsewhere
     public void AddCoins(int numberOfCoins)
     {
         coins += numberOfCoins;

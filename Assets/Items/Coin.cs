@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    //several ways to call the other script
+
+    //private LevelManager gameLevelManager;
+    //gameLevelManager = FindObjectOfType<LevelManager>();
+    //gameLevelManager.AddCoins(coinValue);
+
+    //FindObjectOfType<LevelManager>().AddCoins(coinValue);
+
+
     //access the levelmanager script
-    private LevelManager gameLevelManager;
-    public Rigidbody2D rb;
-    int coinValue = 1;
+
+    private Rigidbody2D rb;
+    private int coinValue = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        //coinValue = 100;
         rb = GetComponent<Rigidbody2D>();
-        gameLevelManager = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -29,24 +36,9 @@ public class Coin : MonoBehaviour
         //check to see if this coin has been picked up by the player, and if so destroy it
         if (other.name == "Player")
 		{
-            gameLevelManager.AddCoins(coinValue);
+            FindObjectOfType<LevelManager>().AddCoins(coinValue);
             Destroy(gameObject);
             //Debug.Log("Coin picked up!");
         }
 	}
-
-    /*
-    void OnCollisionEnter2D(Collider2D other)
-    {
-        //check to see if this coin has been picked up by the player, and if so destroy it
-        if (other.name == "Player")
-        {
-            gameLevelManager.AddCoins(coinValue);
-            Destroy(gameObject);
-            //Debug.Log("Coin picked up!");
-        }
-    }
-    */
-
-    //TO DO: more than one coin script, so we need to pass the score another way
 }

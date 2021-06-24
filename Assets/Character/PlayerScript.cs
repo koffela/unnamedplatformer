@@ -10,6 +10,8 @@ public class PlayerScript : MonoBehaviour
     Rigidbody2D rb;
     private float speed = 8f;
     private float jumpForce = 10f;
+    private float fallMultiplier = 2.5f;
+    private float lowJumpMultiplier = 2f;
 
     //public Transform isGroundedChecker;
     //public float checkGroundRadius;
@@ -17,8 +19,7 @@ public class PlayerScript : MonoBehaviour
     //unlock access to the groundLayer layermask in this script
     public LayerMask groundLayer;
 
-    public float fallMultiplier = 2.5f;
-    public float lowJumpMultiplier = 2f;
+    
 
     void Start()
 	{
@@ -56,10 +57,12 @@ public class PlayerScript : MonoBehaviour
     void BetterJump()
     {
         //builds a 'mario' type jump
+        //deals with falling
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector2.up * Physics2D.gravity * (fallMultiplier - 1) * Time.deltaTime;
         }
+        //deals with jumping up
         else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
         {
             rb.velocity += Vector2.up * Physics2D.gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
@@ -98,15 +101,18 @@ public class PlayerScript : MonoBehaviour
         transform.localScale = characterScale;
     }
 
+
+    /*
     void OnCollisionEnter2D (Collision2D collisionInfo)
 	{
         if (collisionInfo.collider.tag == "hazard")
         {
-            FindObjectOfType<LevelManager>().EndGame();
+            //FindObjectOfType<LevelManager>().EndGame();
         }
         else if (collisionInfo.collider.tag == "enemy")
         {
             //nothing yet
         }
     }
+    */
 }
