@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AI_Patrol.cs" />
      <Compile Include="Assets\Camera\CameraController.cs" />
      <Compile Include="Assets\Character\PlayerScript.cs" />
      <Compile Include="Assets\Items\Coin.cs" />
